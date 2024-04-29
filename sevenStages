@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        MAIL_RECIPIENT = 's222279765@deakin.edu.au'
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -19,7 +15,7 @@ pipeline {
             }
             post {
                 always {
-                    mail to: "s222279765@deakin.edu.au",
+                    mail to: "william.jackson.videos@gmail.com",
                     subject: "Test Stage Completed - ${currentBuild.result}",
                     body: "Unit and Integration tests have been completed. Status: ${currentBuild.result}."
                 }
@@ -38,7 +34,7 @@ pipeline {
             }
             post {
                 always {
-                    mail to: "s222279765@deakin.edu.au",
+                    mail to: "william.jackson.videos@gmail.com",
                     subject: "Security Scan Stage Completed - ${currentBuild.result}",
                     body: "Security scan has been completed. Status:${currentBuild.result}"
                 }
@@ -63,7 +59,7 @@ pipeline {
             }
             post {
                 always {
-                    mail to: "s222279765@deakin.edu.au",
+                    mail to: "william.jackson.videos@gmail.com",
                     subject: "Production Status: ${currentBuild.result}",
                     body: "Deployment to production has been completed. Status: ${currentBuild.result}"
                 }    
