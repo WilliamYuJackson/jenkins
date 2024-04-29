@@ -38,7 +38,7 @@ pipeline {
             }
             post {
                 always {
-                    mail to: "s222279765@deakin.edu.au"
+                    mail to: "s222279765@deakin.edu.au",
                     subject: "Security Scan Stage Completed - ${currentBuild.result}",
                     body: "Security scan has been completed. Status:${currentBuild.result}"
                 }
