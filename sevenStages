@@ -62,9 +62,11 @@ pipeline {
                 echo 'Deploying to production server...'
             }
             post {
-                mail to: "s222279765@deakin.edu.au",
-                subject: "Production Status: ${currentBuild.result}",
-                body: "Deployment to production has been completed. Status: ${currentBuild.result}"
+                always {
+                    mail to: "s222279765@deakin.edu.au",
+                    subject: "Production Status: ${currentBuild.result}",
+                    body: "Deployment to production has been completed. Status: ${currentBuild.result}"
+                }    
             }
         }
     }
