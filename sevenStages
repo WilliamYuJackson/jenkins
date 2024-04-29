@@ -40,8 +40,8 @@ pipeline {
             post {
                 always {
                     mail to: env.MAIL_RECIPIENT,
-                         subject: "Security Scan Stage Completed - ${currentBuild.fullDisplayName}",
-                         body: "Security scan has been completed. Please review the Jenkins console for details.",
+                    subject: "Security Scan Stage Completed - ${currentBuild.fullDisplayName}",
+                    body: "Security scan has been completed. Please review the Jenkins console for details."
                 }
             }
         }
