@@ -52,7 +52,7 @@ pipeline {
         }
         stage("Deploy to Production") {
             steps {
-                echo "The product Alexis is ready for production"
+                echo "Product is complete"
                 echo "AWS server using Jenkins"
             }
         }
