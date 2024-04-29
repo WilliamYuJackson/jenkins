@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MAIL_RECIPIENT = 'william.jackson.videos@gmail.com'
+        MAIL_RECIPIENT = 's222279765@deakin.edu.au'
     }
 
     stages {
@@ -19,10 +19,9 @@ pipeline {
             }
             post {
                 always {
-                    // Send notification email after testing
-                    mail to: env.MAIL_RECIPIENT,
-                         subject: "Test Stage Completed - ${currentBuild.fullDisplayName}",
-                         body: "Unit and Integration tests have been completed. Status: ${currentBuild.result}."
+                    mail to: "s222279765@deakin.edu.au",
+                    subject: "Test Stage Completed - ${currentBuild.result}",
+                    body: "Unit and Integration tests have been completed. Status: ${currentBuild.result}."
                 }
             }
         }
@@ -39,36 +38,34 @@ pipeline {
             }
             post {
                 always {
-                    mail to: env.MAIL_RECIPIENT,
-                    subject: "Security Scan Stage Completed - ${currentBuild.fullDisplayName}",
-                    body: "Security scan has been completed. Please review the Jenkins console for details."
+                    mail to: "s222279765@deakin.edu.au"
+                    subject: "Security Scan Stage Completed - ${currentBuild.result}",
+                    body: "Security scan has been completed. Status:${currentBuild.result}"
                 }
             }
         }
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to staging server...'
-                sh './deploy_staging.sh'
+                echo 'eg AWS using Jenkins pipeline...'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running integration tests on staging environment...'
                 echo 'Using Selenium for UI tests...'
+                sleep 10
             }
         }
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to production server...'
-                sh './deploy_production.sh'
             }
-        }
-    }
-    post {
-        failure {
-            mail to: env.MAIL_RECIPIENT,
-                 subject: "Failed Stage: ${currentBuild.fullDisplayName}",
-                 body: "A stage has failed. Please check the Jenkins console output for more details."
+            post {
+                mail to: "s222279765@deakin.edu.au",
+                subject: "Production Status: ${currentBuild.result}",
+                body: "Deployment to production has been completed. Status: ${currentBuild.result}"
+            }
         }
     }
 }
