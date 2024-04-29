@@ -21,8 +21,8 @@ pipeline {
                 always {
                     // Send notification email after testing
                     mail to: env.MAIL_RECIPIENT,
-                        subject: "Test Stage Completed - ${currentBuild.fullDisplayName}",
-                        body: "Unit and Integration tests have been completed. Status: ${currentBuild.result}."
+                         subject: "Test Stage Completed - ${currentBuild.fullDisplayName}",
+                         body: "Unit and Integration tests have been completed. Status: ${currentBuild.result}."
                 }
             }
         }
@@ -40,8 +40,8 @@ pipeline {
             post {
                 always {
                     mail to: env.MAIL_RECIPIENT,
-                        subject: "Security Scan Stage Completed - ${currentBuild.fullDisplayName}",
-                        body: "Security scan has been completed. Please review the Jenkins console for details.",
+                         subject: "Security Scan Stage Completed - ${currentBuild.fullDisplayName}",
+                         body: "Security scan has been completed. Please review the Jenkins console for details.",
                 }
             }
         }
@@ -67,8 +67,8 @@ pipeline {
     post {
         failure {
             mail to: env.MAIL_RECIPIENT,
-                subject: "Failed Stage: ${currentBuild.fullDisplayName}",
-                body: "A stage has failed. Please check the Jenkins console output for more details."
+                 subject: "Failed Stage: ${currentBuild.fullDisplayName}",
+                 body: "A stage has failed. Please check the Jenkins console output for more details."
         }
     }
 }
