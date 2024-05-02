@@ -1,17 +1,6 @@
 pipeline {
     agent any 
     stages {
-    stage('Test Email') {
-        steps {
-            emailext(
-                subject: 'Test Email from Jenkins',
-                body: 'This is a test email sent from Jenkins to verify configuration.',
-                to: 'william.jackson.videos@gmail.com'
-            )
-        }
-    }
-
-
         stage("Build") {
             steps {
                 echo 'Building the thing we have to build...'
